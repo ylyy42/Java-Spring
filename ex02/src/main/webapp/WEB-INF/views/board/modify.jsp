@@ -30,9 +30,7 @@
 					</div>
 					<div class="form-group">
 						<label>Text area</label>
-						<textarea class="form-control" rows="3" name="content">
-							<c:out value="${board.content }" />
-						</textarea>
+						<textarea class="form-control" rows="3" name="content"><c:out value="${board.content }" /></textarea>
 					</div>
 					<div class="form-group">
 						<label>Writer</label>
@@ -71,8 +69,8 @@
 				formObj.attr("action", "/board/remove");
 			} else if(operation === 'list') {
 				//move to list
-				self.location = "/board/list";
-				return;
+				formObj.attr("action", "/board/list").attr("method","get");
+				formObj.empty();
 			}
 			formObj.submit();
 		});
