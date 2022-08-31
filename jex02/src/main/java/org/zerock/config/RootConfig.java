@@ -19,12 +19,13 @@ public class RootConfig {
 
 	@Bean
 	public DataSource dataSource() {
-		HikariConfig hikariConfig = new HikariConfig();
+		HikariConfig hikariConfig = new  HikariConfig();
 		hikariConfig.setDriverClassName("net.sf.log4jdbc.sql.jdbcapi.DriverSpy");
-		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@localhost:1521:xe");
+		hikariConfig.setJdbcUrl("jdbc:log4jdbc:oracle:thin:@localhost:1521:XE");
 		
 		hikariConfig.setUsername("c##green");
 		hikariConfig.setPassword("green1234");
+		
 		HikariDataSource dataSource = new HikariDataSource(hikariConfig);
 		
 		return dataSource;
@@ -34,7 +35,6 @@ public class RootConfig {
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sqlSessionFactory = new SqlSessionFactoryBean();
 		sqlSessionFactory.setDataSource(dataSource());
-		
 		return (SqlSessionFactory) sqlSessionFactory.getObject();
 	}
 }

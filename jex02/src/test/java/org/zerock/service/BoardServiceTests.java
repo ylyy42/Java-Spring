@@ -20,11 +20,12 @@ public class BoardServiceTests {
 	private BoardService service;
 	
 	@Test
-	public void textExist() {
+	public void testExist() {
 		log.info(service);
 		assertNotNull(service);
 	}
 	
+	//등록 작업
 	@Test
 	public void testRegister() {
 		BoardVO board = new BoardVO();
@@ -36,12 +37,14 @@ public class BoardServiceTests {
 		
 		log.info("생성된 게시물의 번호 : " + board.getBno());
 	}
-	
+		
+	//목록(리스트) 작업
 	@Test
 	public void testGetList() {
 		service.getList().forEach(board -> log.info(board));
 	}
 	
+	//조회 작업
 	@Test
 	public void testGet() {
 		log.info(service.get(1L));
@@ -49,14 +52,13 @@ public class BoardServiceTests {
 	
 	@Test
 	public void testDelete() {
-		// 게시물 번호의 존재 여부를 확인하고 테스트할 것
+		//게시물 번호의 존재 여부를 확인하고 테스트 할 것
 		log.info("REMOVE RESULT : " + service.remove(2L));
 	}
 	
 	@Test
 	public void testUpdate() {
 		BoardVO board = service.get(1L);
-		
 		if(board == null) {
 			return;
 		}
